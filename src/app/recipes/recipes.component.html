@@ -1,0 +1,70 @@
+<app-header></app-header>
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="container">
+                <h4>Filter</h4>
+                <button (click)="getAllrecipes()" class="btn mt-5">All</button><br>
+                <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    Cuisine Type
+                </button><br>
+                <div class="collapse" id="collapseExample">
+                    <button (click)="filterRecipes('cuisine','Italian')" class="btn">Italian</button>
+                    <button (click)="filterRecipes('cuisine','Asian')" class="btn">Asian</button>
+                    <button (click)="filterRecipes('cuisine','American')" class="btn">American</button>
+                    <button (click)="filterRecipes('cuisine','Mexican')" class="btn">Mexican</button>
+                    <button (click)="filterRecipes('cuisine','Pakistani')" class="btn">Pakistani</button>
+                    <button (click)="filterRecipes('cuisine','Japanise')" class="btn">Japanise</button>
+                    <button (click)="filterRecipes('cuisine','Thai')" class="btn">Thai</button>
+                    <button (click)="filterRecipes('cuisine','Indian')" class="btn">Indian</button>
+                    <button (click)="filterRecipes('cuisine','Turkish')" class="btn">Turkish</button>
+                    <button (click)="filterRecipes('cuisine','Smoothie')" class="btn">Smoothie</button>
+                </div>
+                <!-- mealtype -->
+
+                <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMeal" aria-expanded="false" aria-controls="collapseExample">
+                    Meal Type
+                </button>
+                <div class="collapse" id="collapseMeal">
+                    <button (click)="filterRecipes('mealType','Dinner')" class="btn">Dinner</button>
+                    <button (click)="filterRecipes('mealType','Lunch')" class="btn">Lunch</button>
+                    <button (click)="filterRecipes('mealType','Snack')" class="btn">Snack</button>
+                    <button (click)="filterRecipes('mealType','Desert')" class="btn">Desert</button>
+                    <button (click)="filterRecipes('mealType','Appetizer')" class="btn">Appetizer</button>
+                    <button (click)="filterRecipes('mealType','Breakfast')" class="btn">Breakfast</button>
+                    <button (click)="filterRecipes('mealType','Beverage')" class="btn">Beverage</button>
+                    <button (click)="filterRecipes('mealType','Salad')" class="btn">Salad</button>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1>All recipes</h1>
+                <input [(ngModel)]="searchKey" type="text" placeholder="Search your Recipe Here" class="w-50">
+            </div>
+            <div class="row my-3">
+                @if (allrecipes.length>0) {
+                    @for (recipe of allrecipes | search : searchKey | paginate: { itemsPerPage: 9, currentPage: p }; track $index) {
+                        <div class="col-lg-4">
+                            <img [src]="recipe.image" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">{{recipe?.name}}</h5>
+                                <p>Cuisine:{{recipe?.cuisine}}</p>
+                            </div>
+                        </div>
+                    }
+                    @if((allrecipes | search : searchKey).length==0){
+                        <div class="fw-bolder text-center text-danger my-5 fs-2">Recipe Not found</div>
+                    }
+                }@else {
+                    <div class="fw-bolder text-center text-danger">Product Not Found</div>
+                }
+                
+            </div>
+            <div class="text-center my-5">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>

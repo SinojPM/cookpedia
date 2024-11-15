@@ -1,0 +1,76 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row p-5 bg-success">
+        <div class="col-lg-2"> </div>
+        <div class="col-lg-4 text-light">
+            <h1>
+                The Easiest Way <br>
+                To Make Your <br>
+                Favorite Meal
+            </h1>
+            <p style="text-align: justify;">Discover 100+ recipes in your hand with the best recipe.Help you to find the Easiest way to cook</p>
+            <a routerLink="/recipes" style="background-color: green;" class="btn text-light">Explore Recipes</a>
+        </div>
+        <div class="col-lg-6">
+            <img style="margin-left: 150px;" class="w-50 landingImg" src="https://www.pngall.com/wp-content/uploads/2/Healthy-Meal.png" alt="">
+        </div>
+    </div>
+    <!-- popular recipes -->
+     <div class="my-5 p-5">
+        <h1>Popular Recipe of the Week</h1>
+        <div class="d-flex justify-content-between">
+            <p>Our most popular recipe of the Week</p>
+            <a routerLink="/recipes">view All...</a>
+        </div>
+        <div class="row my-3">
+            @for (recipe of homeRecipes; track $index) {
+                <div class="col-lg-4 mb-5">
+                    <img [src]="recipe.image" alt="" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">{{recipe.name}}</h5>
+                    </div>
+                </div>
+            }
+            
+        </div>
+     </div>
+     <!-- banners -->
+      <div style="height: 400px;background-image: url(https://images.unsplash.com/photo-1447078806655-40579c2520d6?h=500&w=1600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3);" class="row align-items-center my-5">
+        <div class="col-lg-6">
+        </div>
+        <div class="col-lg-6">
+            <div class="bg-light rounded p-5 w-75">
+                <h3>50+ Recipes That Very Quick And Fast</h3>
+                <p class="text-secondary mt-5">Find the perfect food ideas to start your day with the quick and easiest way</p>
+            </div>
+        </div>
+
+      </div>
+      <div style="height: 450px;" class="my-5 row text-light align-items-center bg-success rounded p-5">
+        <div class="col-lg-6">
+            <img height="350px" src="https://www.pngitem.com/pimgs/m/9-94803_transparent-phone-vector-png-mobile-apps-design-png.png" alt="">
+        </div>
+        <div class="col-lg-6 text-center">
+            <h1>Download App</h1>
+            <h5 class="my-3">Dowload the app from App store or google play for a better experiance</h5>
+            <div class="d-flex justify-content-center align-items-center">
+                <img width="150px" src="https://www.freepnglogos.com/uploads/app-store-logo-png/available-the-app-store-logo-png-images-14.png" alt="">
+                <img width="150px" src="https://images.squarespace-cdn.com/content/v1/576a8430197aea94fed3d946/1587949730372-PWA465BP675MHK31E9E4/GOOGLE-PLAY-BADGE..png" alt="">
+            </div>
+        </div>
+      </div>
+      <!-- client testimonials -->
+       <div class="text-center my-5">
+        <h1>Client Textimonial</h1>
+            <marquee behavior="" direction="">
+                <div class="row my-5">
+                    <div class="col-lg-4">
+                        <div class="rounded border w-100 p-3">
+                            <h5>Name</h5>
+                            <p style="white-space: normal;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis sequi necessitatibus optio veniam, quo ex rerum animi sunt in incidunt sit officiis nisi pariatur placeat voluptatibus qui a fuga voluptatum.</p>
+                        </div>
+                    </div>
+                </div>
+            </marquee>
+       </div>
+</div>
